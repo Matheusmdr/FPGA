@@ -19,10 +19,23 @@ default question_2_lindsey = 'Errada'
 default question_3_lindsey = 'Errada'
 default lindsey_friendship = 0
 default alianca_joana = 0
+default troca_respostas_lindsey = 0
 
 
 # INICIO CAPITULO 1
 label start:
+
+    $ question_1_thomas = 'Errada'
+    $ question_2_thomas = 'Errada'
+    $ question_3_thomas = 'Errada'
+    $ question_2_jean = 'Errada'
+    $ question_3_jean = 'Errada'
+    $ question_2_lindsey = 'Errada'
+    $ question_3_lindsey = 'Errada'
+    $ lindsey_friendship = 0
+    $ alianca_joana = 0
+    $ troca_respostas_lindsey = 0
+
     scene bg corridor
 
 label cena_corredor:
@@ -69,7 +82,7 @@ label cena_sala:
 
     p "(Não se deram ao trabalho nem de colocar as regras do exame no papel. Que falta de profissionalidade.)"
 
-    i "1ª Regra: As folhas em cima de vossas carteiras devem ser preenchidas com as suas respectivas respostas para as perguntas nelas descritas. As respostas devem estar de caneta preta para serem válidas na correção. Qualquer rasura ou dano causado as folhas anularão completamente as questões."
+    i "1ª Regra: As folhas em suas carteiras devem ser preenchidas com as respostas das suas respectivas perguntas. Apenas respostas escritas à caneta preta são válidas. Qualquer rasura ou dano nas folhas anularão completamente as questões."
 
     i "2ª Regra: As folhas podem começar a ser preenchidas apenas a partir do horário de início que está marcado na lousa. Com o início do exame eu sairei da sala, e apenas retornarei no término do período para recolher as provas e dispensa-los... "
 
@@ -678,7 +691,7 @@ label caminhoQ2_derivado_principal:
 
     menu: 
         "a) Pensar em algo novo para falar para Lindsey (insistir na conversa).":
-             $ question_talk_to_lindsey  = 'a'
+            $ question_talk_to_lindsey  = 'a'
         "b) Deixar Lindsey em paz por enquanto e ir falar com Joana (desistir da conversa).":
             $ question_talk_to_lindsey  = 'b'
             jump caminhoQ2_2_derivado_principal
@@ -1564,7 +1577,7 @@ label caminhoQ2_4_derivado_principal:
         "Conversar com Luan (manter aliança)":
             jump caminhoQ2_7_derivado_principal
     
-    "" "A aliança com Joana foi rompida"
+    # "" "A aliança com Joana foi rompida"
 
 
     p "(Honestamente, quem se importa com essa aliança idiota?)"
@@ -2145,7 +2158,7 @@ label caminhoQ2_8_derivado_principal:
     
     p "(Bem, não importa. Penso nisso depois da prova.)"
 
-    "" "Thomas forjou uma aliança com Joana"
+    # "" "Thomas forjou uma aliança com Joana"
     $ alianca_joana = 1
 
     jump caminhoQ2_11_derivado_principal
@@ -2372,7 +2385,7 @@ label final_completo_1:
 
 
     if(question_2_lindsey != "Certa" or question_3_lindsey != "Certa"):
-        jump finais_curtos_1_2
+        jump final_completo_1_2
 
 
     l "Oi, Thomas!"
@@ -2479,7 +2492,7 @@ label final_completo_1_1:
     p "(Bem, é melhor eu ir comer logo.)"
     p "(O dia vai ser cheio.)"
 
-    jump finais_curtos_1_2
+    jump final_completo_1_2
 
 
 label final_completo_1_2:
@@ -2536,7 +2549,7 @@ label final_completo_1_3:
     p "(Mas enfim, quando eu chegar em casa eu penso nisso.)"
     p "(Por agora, eu só estou feliz que entrei.)"
     p "(Finalmente uma coisa para eu ter orgulho.)"
-    if((question_2_lindsey != 'Certa' or question_3_lindsey != 'Certa') and amizade_lindsey > 0 ):
+    if((question_2_lindsey != 'Certa' or question_3_lindsey != 'Certa') and lindsey_friendship > 0 ):
         jump final_completo_1_4
     stop music fadeout 1.0
     jump play_again
