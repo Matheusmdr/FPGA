@@ -892,7 +892,7 @@ label caminhoQ2_2_derivado_principal:
     
     p "(Jean linguarudo dos infernos. Dando informações a adversária?)"
     
-    p "(Por que não diz onde eu morro e meu tipo sanguíneo também?)"
+    p "(Por que não diz onde eu moro e meu tipo sanguíneo também?)"
     
     jo "Bem, infelizmente eu não tenho uma pergunta com você."
    
