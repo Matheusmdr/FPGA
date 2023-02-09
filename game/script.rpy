@@ -12,7 +12,7 @@ define jo = Character("Joana", color='#fff')
 
 default question_1_thomas = 'Errada'
 default question_2_thomas = 'Errada'
-default question_3_thomas = ''
+default question_3_thomas = 'Errada'
 default question_2_jean = 'Errada'
 default question_3_jean = 'Errada'
 default question_2_lindsey = 'Errada'
@@ -954,9 +954,10 @@ label caminhoQ2_2_derivado_principal:
 
     menu:
         "Ajudar a Lindsey (interferir).":
-            $ nada = 'nada'
+            $ lindsey_friendship = 1
         "Não fazer nada (não interferir)":
             $ lindsey_friendship = 0
+            $ favor_lindsey = 0
             jump caminhoQ2_3_derivado_principal
     
     hide lindsey angry
@@ -996,7 +997,8 @@ label caminhoQ2_2_derivado_principal:
         "Brigar com o homem (usar de violência).": 
             jump final_desclassificado
         "Convence-lo a parar na conversa (não usar de violência).":
-            $ nada = 'nada'
+            $ favor_lindsey = 1
+            $ lindsey_friendship = 1
 
 
     p "Seguinte, “amigo”."
@@ -1091,7 +1093,7 @@ label caminhoQ2_2_derivado_principal:
     
     show lindsey smile
 
-    l "obrigada mesmo assim."
+    l "Obrigada mesmo assim."
     
     l "Eu te devo uma."
     
@@ -1101,9 +1103,6 @@ label caminhoQ2_2_derivado_principal:
     hide lindsey smile 
 
     
-    $ favor_lindsey = 1
-
-    $ lindsey_friendship = 1
     stop music fadeout 1.0
     play music "audio/tema_dialogo_joana_ou_conversa_pensativa.mp3" fadein 1.0 volume 0.3
 
@@ -1562,7 +1561,7 @@ label caminhoQ2_4_derivado_principal:
     menu:
         "Conversar com Lindsey (quebrar aliança)":
             $ nada = 'nada'
-        "Conversar com Luan (Manter aliança)":
+        "Conversar com Luan (manter aliança)":
             jump caminhoQ2_7_derivado_principal
     
     "" "A aliança com Joana foi rompida"
@@ -1643,7 +1642,7 @@ label caminhoQ2_4_derivado_principal:
     
     p "Você quer que eu te ajude a responder?"
 
-    if(question_3_thomas != ''):
+    if(question_3_thomas != 'Certa'):
         jump caminhoQ2_5_derivado_principal
     
     show lindsey shocked
@@ -1749,6 +1748,8 @@ label caminhoQ2_5_derivado_principal:
     $ question_3_thomas  = 'Certa'
    
     $ troca_respostas_lindsey = 1
+
+    jump caminhoQ2_6_derivado_principal
 
 label caminhoQ2_6_derivado_principal:
     stop music fadeout 1.0
@@ -1956,6 +1957,8 @@ label caminhoQ2_7_derivado_principal:
    
     p "(Eu nem sei se ela daria depois do que aconteceu.)"
 
+    jump caminhoQ2_8_derivado_principal
+
 label caminhoQ2_8_derivado_principal:
     
     stop music fadeout 1.0
@@ -1967,7 +1970,7 @@ label caminhoQ2_8_derivado_principal:
 
     menu:
         "Cobrar o favor de Lindsey para receber a resposta (manter aliança).":
-            $nada = 'nada'
+            $ lindsey_friendship = 0
         "Desistir de perguntar e responder a questão de Joana por si só (quebrar aliança).":
             jump caminhoQ2_10_derivado_principal
 
@@ -2036,9 +2039,6 @@ label caminhoQ2_8_derivado_principal:
     p "Então, obrigado de novo. E boa sorte!"
   
     l "Não seja por isso. Boa sorte pra você também."
-
-
-    $ lindsey_friendship = 0
     
     hide lindsey normal
     with fade
@@ -2199,6 +2199,8 @@ label caminhoQ2_10_derivado_principal:
     p "(Acho que é melhor assim. Eu não preciso da resposta da Joana.)"
     p "(Vou voltar para minha carteira e responder eu mesmo!)"
 
+    jump caminhoQ2_11_derivado_principal
+
 label caminhoQ2_11_derivado_principal:
     play music "audio/tema_protagonista_pensando_respondendo_questoes.mp3" fadein 1.0 volume 0.3
     scene bg caderno
@@ -2226,7 +2228,7 @@ label caminhoQ2_12_derivado_principal:
 
 label caminhoQ2_13_derivado_principal:
 
-    if(question_3_thomas  == '' or question_3_thomas  == ' ' ):
+    if(question_3_thomas  == 'Certa'):
         jump caminhoQ2_14_derivado_principal
 
     "Questão" "... que método é usado para executar dois ou mais programas diferentes em um processador de 1 só núcleo e sem pipeline, porém dando ao usuário a impressão de que todos eles são executados ao mesmo tempo?"
@@ -2369,7 +2371,7 @@ label final_completo_1:
     p "(É o primeiro dia e eu já estou tendo arrependimentos.)"
 
 
-    if(questao_3_lindsey != "Certa" and lindsey_questao_2 != "Certa"):
+    if(question_2_lindsey != "Certa" or question_3_lindsey != "Certa"):
         jump finais_curtos_1_2
 
 
@@ -2482,7 +2484,7 @@ label final_completo_1_1:
 
 label final_completo_1_2:
     play music "audio/tema_durante_finais_completos.mp3" fadein 1.0 volume 0.3
-    if(question_1_thomas == 'Errada' or question_2_thomas == 'Errada' or question_3_thomas  == 'Errada'):
+    if(question_2_jean == 'Errada' or question_3_jean == 'Errada'):
         jump final_completo_1_3
 
 
