@@ -12,7 +12,7 @@ define jo = Character("Joana", color='#fff')
 
 default question_1_thomas = 'Errada'
 default question_2_thomas = 'Errada'
-default question_3_thomas = 'Errada'
+default question_3_thomas = ''
 default question_2_jean = 'Errada'
 default question_3_jean = 'Errada'
 default question_2_lindsey = 'Errada'
@@ -1643,7 +1643,7 @@ label caminhoQ2_4_derivado_principal:
     
     p "Você quer que eu te ajude a responder?"
 
-    if(question_3_thomas != 'Certa'):
+    if(question_3_thomas != ''):
         jump caminhoQ2_5_derivado_principal
     
     show lindsey shocked
@@ -2226,7 +2226,7 @@ label caminhoQ2_12_derivado_principal:
 
 label caminhoQ2_13_derivado_principal:
 
-    if(question_3_thomas  == 'Certa'):
+    if(question_3_thomas  == '' or question_3_thomas  == ' ' ):
         jump caminhoQ2_14_derivado_principal
 
     "Questão" "... que método é usado para executar dois ou mais programas diferentes em um processador de 1 só núcleo e sem pipeline, porém dando ao usuário a impressão de que todos eles são executados ao mesmo tempo?"
