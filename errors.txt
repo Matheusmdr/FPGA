@@ -1,0 +1,18 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 1380: expected statement.
+    Remover Lindsey da tela
+                           ^
+
+File "game/script.rpy", line 1435: expected statement.
+    final_completo_1_3
+                      ^
+
+File "game/script.rpy", line 1462: expected statement.
+    "" O dia de trabalho termina e Thomas caminha de volta para casa.
+                                                                    ^
+
+Ren'Py Version: Ren'Py 8.0.3.22090809
+Wed Feb  8 17:44:43 2023
